@@ -64,6 +64,57 @@ def pareto_mask(points: np.ndarray) -> np.ndarray:
 st.title("Hospital ED Capacity Planner")
 st.caption("Explore 33 discrete-event-simulation scenarios — bay count × closing time — and find the configuration that minimises your total operating cost.")
 
+with st.expander("How to use this app", expanded=False):
+    st.markdown("""
+**What this app does in plain English.**
+A hospital is planning a joint cardiac and electrophysiology lab. They
+need to decide two things: (1) how many holding bays to build, and
+(2) how late to keep the lab open each day. Build too few bays or
+close too early → patients give up and leave (called "reneging") and
+overflow to other hospitals. Build too many → wasted money. We ran
+**33 simulations** in Arena (a discrete-event simulation tool) varying
+bay count from 11 to 21 and closing time at 8 PM / 10 PM / 12 AM.
+This app lets you explore those scenarios and find the cheapest
+configuration that hits acceptable patient outcomes.
+
+**Quick start (60 seconds).**
+1. Look at the **Pareto frontier** chart on the main page — every dot
+   is one scenario plotted on (cost) vs (reneges). The dots on the
+   bottom-left curve are non-dominated (best trade-offs).
+2. Use the **filters** in the sidebar to narrow down by bay count or
+   closing time.
+3. Open the **Heatmaps** tab to see all 33 scenarios in a grid.
+
+**The metrics in plain English.**
+- **Reneges** — patients who arrive but leave without being seen
+  because the wait was too long. We want this LOW.
+- **Transfers** — patients moved to another hospital. Also LOW.
+- **Bay utilisation** — what % of the time bays are occupied. Too low
+  = wasted; too high = no slack for emergencies. Sweet spot ~75-85 %.
+- **Total cost** — staffing + facility cost per day. LOW.
+
+**The tabs / pages.**
+- **Pareto frontier** — the key chart. Dots on the bottom-left curve
+  are configurations where you can't reduce cost without increasing
+  reneges (or vice versa). Pick from these.
+- **Heatmaps** — all scenarios in a colour grid. Easy to spot
+  patterns (e.g. "bay 14, close 10 PM" is a sweet spot).
+- **Scenario detail** — pick one scenario, see all metrics for it.
+- **Recommendation** — the best scenario by your weight on
+  cost-vs-reneges trade-off.
+
+**The trade-off slider.**
+- **Cost weight** — how much you value saving money vs reducing
+  reneges. 0 = "I'll pay anything to never have a renege"; 1 = "Cheap
+  is everything." Most hospitals land around 0.6-0.7.
+
+**Try this.** Slide cost-weight from 1.0 down to 0.0 and watch the
+recommended configuration shift from cheapest (fewer bays, earlier
+close) to most-patient-friendly (more bays, later close). The
+recommendation usually settles around **14 bays, 10 PM close** —
+that's the non-dominated middle of the Pareto frontier.
+""")
+
 if not DATA.exists():
     st.error(f"`{DATA}` not found. Make sure you're running from the project folder.")
     st.stop()
