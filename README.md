@@ -1,5 +1,7 @@
 # Hospital ED Capacity Planning — Arena Simulation + Scenario Analysis
 
+**[Live demo](https://hospital-ed-simulation.streamlit.app)** — runs in your browser, no install required.
+
 Discrete-event simulation (DES) of a **joint cardiac catheterization and
 electrophysiology lab** to drive a bay-count and operating-hours recommendation.
 Built in Arena; a Python analysis layer reads the 33 scenario outputs and
