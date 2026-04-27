@@ -1,6 +1,6 @@
-# Hospital ED Capacity Planning — Arena Simulation + Scenario Analysis
+# Hospital ED Capacity Planning : Arena Simulation + Scenario Analysis
 
-**[Live demo](https://mason-hospital-ed-simulation.streamlit.app/)** — runs in your browser, no install required.
+**[Live demo](https://mason-hospital-ed-simulation.streamlit.app/)** : runs in the browser, no install required.
 
 Discrete-event simulation (DES) of a **joint cardiac catheterization and
 electrophysiology lab** to drive a bay-count and operating-hours recommendation.
@@ -29,8 +29,8 @@ hold-for-bay queue time, bay and lab utilization, absolute reneges, bay seizures
 
 ## Key findings
 
-- **Closing time dominates bay count** as a lever — extending from 8 PM to 12 AM cuts reneging by ~20 % at every bay count.
-- **Bay utilization collapses past ~16 bays** — diminishing returns on capacity.
+- **Closing time dominates bay count** as a lever : extending from 8 PM to 12 AM cuts reneging by ~20 % at every bay count.
+- **Bay utilization collapses past ~16 bays** : diminishing returns on capacity.
 - The Pareto frontier exposes ~8 efficient scenarios; under plausible cost parameters the recommendation lands in the **16 – 18 bay, 10 PM closing** region.
 
 ![Reneging vs bays](reneging_vs_bays.png)
@@ -73,17 +73,17 @@ streamlit run scenario_analysis_app.py
 
 The dashboard:
 
-- **Cost-assumption sliders** — set the dollar value of each renege, the
+- **Cost-assumption sliders** : set the dollar value of each renege, the
   amortised monthly cost per bay, and the overtime cost of each closing
   time. The recommended configuration updates immediately under the new
   assumptions.
-- **Cost grid heatmap** — every (bay count × closing time) cell coloured
+- **Cost grid heatmap** : every (bay count × closing time) cell coloured
   by total cost; the recommended cell is outlined.
-- **Pareto frontier** — scatter of all 33 scenarios with the cost-reneges
+- **Pareto frontier** : scatter of all 33 scenarios with the cost-reneges
   Pareto frontier highlighted; the recommendation is starred.
-- **Scenario filters** — narrow to a bay-count range or a subset of
+- **Scenario filters** : narrow to a bay-count range or a subset of
   closing times.
-- **Single-metric view** — chart any output (reneges, wait times, bay or
+- **Single-metric view** : chart any output (reneges, wait times, bay or
   lab utilization) as a function of bay count for each closing time.
 
 ## Stack
